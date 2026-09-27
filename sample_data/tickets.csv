@@ -1,0 +1,11 @@
+ticket_id,subject,description,resolution,category
+TKT-1001,Login OTP not received,Customer is not receiving the OTP SMS while logging in on the mobile app.,SMS provider rate limit was exceeded. Increased the limit and added email OTP as a fallback.,Authentication
+TKT-1002,Payment deducted but order not placed,Amount was debited from the customer's bank account but the order status shows failed.,Payment gateway webhook timed out. Order was created manually and webhook retry was enabled.,Payments
+TKT-1003,App crashes on Android 14,The app closes immediately after the splash screen on Android 14 devices.,Crash caused by a deprecated storage permission. Fixed in app version 3.2.1.,Mobile App
+TKT-1004,Refund not received after 7 days,Customer cancelled an order but the refund has not reached their account.,Refund was stuck in pending state. Re-initiated through the gateway dashboard; refunds take 5-7 business days.,Payments
+TKT-1005,Password reset link expired,The password reset link says expired even when opened immediately.,Server clock was out of sync causing token expiry mismatch. Synced server time with NTP.,Authentication
+TKT-1006,Invoice PDF shows wrong GST,The GST amount on the downloaded invoice does not match the checkout total.,GST rounding was applied per item instead of on the total. Fixed the invoice calculation logic.,Billing
+TKT-1007,Slow dashboard loading,The admin dashboard takes more than 20 seconds to load reports.,Added a database index on the orders.created_at column and cached report queries. Load time reduced to 2 seconds.,Performance
+TKT-1008,Unable to upload profile picture,Users get an error when uploading profile pictures larger than 2 MB.,Increased the upload size limit to 10 MB and added client-side image compression.,Mobile App
+TKT-1009,Duplicate order emails,Customers receive the order confirmation email two or three times.,Email job was retried on timeout without an idempotency check. Added a unique message ID check.,Notifications
+TKT-1010,Coupon code not applying,Valid coupon code shows invalid at checkout.,Coupon validation was case sensitive. Made coupon matching case insensitive.,Checkout
